@@ -7,7 +7,7 @@
 enabled_site_setting :chat_integration_ifttt_enabled
 
 after_initialize do
-  require_relative "../discourse-chat-integration/app/initializers/discourse_chat"
+  require_relative "../discourse-chat-integration/app/initializers/discourse_chat_integration"
 
   # Register a module under DiscourseChat::Provider which ends in the word "Provider"
   module DiscourseChat::Provider::IftttProvider
