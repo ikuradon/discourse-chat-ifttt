@@ -9,8 +9,8 @@ enabled_site_setting :chat_integration_ifttt_enabled
 after_initialize do
   require_relative "../discourse-chat-integration/app/initializers/discourse_chat_integration"
 
-  # Register a module under DiscourseChat::Provider which ends in the word "Provider"
-  module DiscourseChat::Provider::IftttProvider
+  # Register a module under DiscourseChatIntegration::Provider which ends in the word "Provider"
+  module DiscourseChatIntegration::Provider::IftttProvider
         PROVIDER_NAME = "ifttt".freeze
         PROVIDER_ENABLED_SETTING = :chat_integration_ifttt_enabled
         CHANNEL_PARAMETERS = [
@@ -42,7 +42,7 @@ after_initialize do
             if response.body.include? 'invalid key'
               error_key = 'chat_integration.provider.ifttt.invalid_key'
             end
-            raise ::DiscourseChat::ProviderError.new info: {error_key: error_key, message: message, response_body:response.body}
+            raise ::DiscourseChatIntegration::ProviderError.new info: {error_key: error_key, message: message, response_body:response.body}
           end
 
         end
